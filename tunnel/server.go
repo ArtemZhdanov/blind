@@ -301,7 +301,7 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 	}
 
 	// Extract parts in reverse order since DNS names are right-to-left
-	tld := strings.Join(parts[len(parts)-3:]
+	tld := strings.Join(parts[len(parts)-3:], ".")
 	sessionID := parts[len(parts)-4]
 	sequence := parts[len(parts)-5]
 
