@@ -291,7 +291,7 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 	parts := strings.Split(strings.TrimSuffix(question.Name, "."), ".")
 
 	// Validate parts length
-	if len(parts) < 4 {
+	if len(parts) < 6 {
 		if s.debug {
 			log.Printf("Invalid request format: not enough parts")
 		}
