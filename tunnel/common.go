@@ -20,7 +20,7 @@ const (
 	pollDelay           = 100 * time.Millisecond
 	sshPacketHeaderSize = 5
 	sessionIDLength     = 7
-	defaultTLD          = "edu"
+	defaultTLD          = "blind.dns-radar.ru"
 	maxSafeLabelSize    = 40
 )
 
