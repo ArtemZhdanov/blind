@@ -284,7 +284,7 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 	if opt := r.IsEdns0(); opt != nil {
 		msg.SetEdns0(opt.UDPSize(), opt.Do())
 	} else {
-		msg.SetEdns0(4096, false)
+		msg.SetEdns0(1232, false)
 	}
 
 	// Parse the DNS question
@@ -301,12 +301,12 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 	}
 
 	// Extract parts in reverse order since DNS names are right-to-left
-	tld := parts[len(parts)-1]
-	sessionID := parts[len(parts)-2]
-	sequence := parts[len(parts)-3]
+	tld := strings.Join(parts[len(parts)-3:]
+	sessionID := parts[len(parts)-4]
+	sequence := parts[len(parts)-5]
 
 	// Combine all remaining parts as the encoded data
-	encodedData := strings.Join(parts[:len(parts)-3], ".")
+	encodedData := strings.Join(parts[:len(parts)-5], ".")
 
 	if s.debug {
 		log.Printf("Parsed request:")
